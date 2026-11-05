@@ -15,20 +15,18 @@
   "files": ["dist", "README.md", "LICENSE"],
   "scripts": {
     "build": "tsc -p tsconfig.json",
+    "build:demo": "vite build --config vite.config.ts",
     "typecheck": "tsc --noEmit -p tsconfig.json",
     "test": "vitest run",
     "test:watch": "vitest",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist dist-demo"
   },
-  "engines": {
-    "node": ">=20"
-  },
-  "dependencies": {
-    "@stellar/stellar-sdk": "^13.3.0"
-  },
+  "engines": { "node": ">=20" },
+  "dependencies": { "@stellar/stellar-sdk": "^13.3.0" },
   "devDependencies": {
     "@types/node": "^22.10.0",
     "typescript": "^5.7.2",
-    "vitest": "^2.1.8"
+    "vitest": "^2.1.8",
+    "vite": "^6.0.7"
   }
 }
