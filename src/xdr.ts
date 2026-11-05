@@ -58,8 +58,7 @@ export function normalizeOperations(rawOperations: unknown[]): GuardOperation[] 
  */
 export function inspectXdr(xdr: string, networkPassphrase: string, policy: GuardPolicy): GuardResult {
   try {
-    const builder = TransactionBuilder.fromXDR(xdr, networkPassphrase);
-    const transaction = builder.build() as unknown as { operations?: unknown[] };
+    const transaction = TransactionBuilder.fromXDR(xdr, networkPassphrase) as unknown as { operations?: unknown[] };
     if (!Array.isArray(transaction.operations)) {
       return {
         allowed: false,
