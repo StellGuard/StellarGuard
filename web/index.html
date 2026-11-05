@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#090d18" />
+    <meta name="description" content="Test Stellar transaction policies with StellarGuard's interactive demo." />
+    <title>StellarGuard — Transaction Policy Playground</title>
+  </head>
+  <body>
+    <div class="shell">
+      <header class="topbar">
+        <a class="brand" href="./"><span class="brand-mark">✳</span> StellarGuard</a>
+        <nav><a href="https://github.com/StellGuard/StellarGuard" target="_blank" rel="noreferrer">GitHub ↗</a><a href="https://github.com/StellGuard/StellarGuard/blob/main/README.md" target="_blank" rel="noreferrer">Documentation ↗</a></nav>
+      </header>
+      <main>
+        <section class="hero">
+          <div class="eyebrow"><span class="pulse"></span> STELLAR TRANSACTION POLICY PLAYGROUND</div>
+          <h1>Know what you're<br /><span>about to sign.</span></h1>
+          <p class="intro">Try policy rules against a sample Stellar transaction. StellarGuard evaluates the transaction data and explains every decision before a wallet signs.</p>
+          <div class="hero-note"><span>✓</span> Local evaluation · No wallet connection · No transaction submitted</div>
+        </section>
+        <section class="workspace">
+          <div class="panel">
+            <div class="panel-head"><div><span class="step">01</span><h2>Transaction</h2></div><button class="text-button" id="reset">Reset example ↺</button></div>
+            <label for="transaction">Normalized transaction JSON</label>
+            <textarea id="transaction" spellcheck="false"></textarea>
+            <p class="hint">This playground accepts normalized transaction data, not a signed or raw XDR envelope.</p>
+          </div>
+          <div class="panel">
+            <div class="panel-head"><div><span class="step">02</span><h2>Policy rules</h2></div></div>
+            <label for="policy">Guard policy JSON</label>
+            <textarea id="policy" spellcheck="false"></textarea>
+            <p class="hint">Allow only the networks, operations, destinations and assets your application trusts.</p>
+          </div>
+        </section>
+        <section class="run-row"><button class="run-button" id="evaluate"><span>Run policy check</span><b>→</b></button><span class="run-caption">Powered by the StellarGuard TypeScript evaluator</span></section>
+        <section class="result panel" id="result" aria-live="polite">
+          <div class="empty-state"><div class="empty-icon">◎</div><h2>Awaiting evaluation</h2><p>Run the policy check to see the decision and findings.</p></div>
+        </section>
+        <section class="footnote"><strong>Important:</strong> This is an early-stage policy evaluator, not a transaction simulator, auditor, signer, or guarantee that a transaction is safe. Always independently inspect transactions and test integrations before production use.</section>
+      </main>
+      <footer><span>© 2026 StellarGuard</span><span>Built for the Stellar ecosystem</span></footer>
+    </div>
+    <script type="module" src="/main.ts"></script>
+  </body>
+</html>
