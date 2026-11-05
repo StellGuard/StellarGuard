@@ -1,4 +1,5 @@
-import { evaluatePolicy, type GuardPolicy, type GuardTransaction } from "../src/index.js";
+import { evaluatePolicy } from "../src/policy.js";
+import type { GuardPolicy, GuardTransaction } from "../src/types.js";
 import "./style.css";
 
 const transactionExample: GuardTransaction = {
