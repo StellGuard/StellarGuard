@@ -15,7 +15,10 @@ function asString(value: unknown): string | undefined {
 function assetName(value: unknown): string | undefined {
   if (typeof value === "string") return value;
   const asset = asRecord(value);
-  if (asset.isNative === true) return "native";
+  const nativeFlag = asset.isNative;
+  if (nativeFlag === true || (typeof nativeFlag === "function" && nativeFlag.call(value) === true)) {
+    return "native";
+  }
   const code = asString(asset.code);
   const issuer = asString(asset.issuer);
   return code && issuer ? `${code}:${issuer}` : undefined;
