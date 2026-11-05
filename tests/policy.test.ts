@@ -60,8 +60,15 @@ describe("StellarGuard policy evaluation", () => {
     expect(result.findings.some((finding) => finding.code === "CONTRACT_NOT_ALLOWED")).toBe(true);
   });
 
-  it("rejects malformed transaction input", () => {
-    expect(inspectTransaction({ network: "", operations: [] }, policy).allowed).toBe(true);
+  it("rejects malformed transactions with an empty network or no operations", () => {
+    const emptyNetwork = inspectTransaction({ network: "", operations: transaction.operations }, policy);
+    expect(emptyNetwork.allowed).toBe(false);
+    expect(emptyNetwork.findings[0]?.code).toBe("INVALID_TRANSACTION");
+
+    const noOperations = inspectTransaction({ network: transaction.network, operations: [] }, policy);
+    expect(noOperations.allowed).toBe(false);
+    expect(noOperations.findings[0]?.code).toBe("INVALID_TRANSACTION");
+
     expect(inspectTransaction(null as never, policy).allowed).toBe(false);
   });
 });
